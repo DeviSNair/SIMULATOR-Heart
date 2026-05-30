@@ -346,6 +346,7 @@ body {
 
 .tte-ref-search-box,
 .tte-ref-status-box,
+.tte-ref-view-select-wrap,
 .tte-ref-view-select-top,
 .tte-ref-card {
   background: #ffffff;
@@ -394,13 +395,52 @@ body {
 }
 
 .tte-ref-view-select-top {
+  width: 100%;
   height: 58px;
   border: 1px solid #e5eef5;
   outline: none;
-  padding: 0 18px;
+  padding: 0 70px 0 18px;
   font-size: 15px;
   color: #29485f;
+  background: #ffffff;
   appearance: auto;
+}
+
+.tte-ref-view-select-wrap {
+  position: relative;
+  min-width: 0;
+  height: 58px;
+  border-radius: 16px;
+}
+
+.tte-ref-view-select-wrap .tte-ref-view-select-top {
+  box-shadow: none;
+}
+
+.tte-ref-next-view-btn {
+  position: absolute;
+  top: 50%;
+  right: 34px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #d5e3ee;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #0e496d;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.tte-ref-next-view-btn:hover,
+.tte-ref-next-view-btn:focus-visible {
+  border-color: #3d7cff;
+  color: #245c74;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(61, 124, 255, 0.12);
 }
 
 /* ---- card ---- */

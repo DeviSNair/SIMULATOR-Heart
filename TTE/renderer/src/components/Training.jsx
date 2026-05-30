@@ -181,6 +181,16 @@ export default function Training({ setMode }) {
     }
   }
 
+  function handleNextView() {
+    if (!filteredViews.length) return;
+
+    const currentIndex = filteredViews.findIndex((view) => view.id === currentId);
+    const nextView = filteredViews[(currentIndex + 1) % filteredViews.length] ?? filteredViews[0];
+
+    setCurrentId(nextView.id);
+    setSelectedViewName(nextView.view_name);
+  }
+
   if (!currentView) return null;
   const currentHotspots = currentView.hotspots ?? [];
 
@@ -327,17 +337,27 @@ export default function Training({ setMode }) {
             />
           </div>
 
-          <select
-            className="tte-ref-view-select-top"
-            value={selectedViewName || currentView.view_name}
-            onChange={handleFilteredSelectChange}
-          >
-            {filteredViews.map((view) => (
-              <option key={view.id} value={view.view_name}>
-                {view.view_name}
-              </option>
-            ))}
-          </select>
+          <div className="tte-ref-view-select-wrap">
+            <select
+              className="tte-ref-view-select-top"
+              value={selectedViewName || currentView.view_name}
+              onChange={handleFilteredSelectChange}
+            >
+              {filteredViews.map((view) => (
+                <option key={view.id} value={view.view_name}>
+                  {view.view_name}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              className="tte-ref-next-view-btn"
+              onClick={handleNextView}
+              aria-label="Next view"
+            >
+              &gt;
+            </button>
+          </div>
         </div>
 
         <div className="tte-ref-card">

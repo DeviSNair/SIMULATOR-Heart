@@ -109,6 +109,16 @@ export default function Calibration({ setMode }) {
     loadViewCalibration(nextViewId);
   }
 
+  function handleNextView() {
+    if (!views.length) return;
+
+    const currentIndex = views.findIndex((view) => view.id === selectedViewId);
+    const nextView = views[(currentIndex + 1) % views.length] ?? views[0];
+
+    setSelectedViewId(nextView.id);
+    loadViewCalibration(nextView.id);
+  }
+
   function handleSave() {
     if (!currentView) return;
     if (!probeReading) {
@@ -171,17 +181,27 @@ export default function Calibration({ setMode }) {
             {status || "Choose a view, position the probe, and save the current live reading for training mode."}
           </div>
 
-          <select
-            className="tte-ref-view-select-top"
-            value={selectedViewId}
-            onChange={handleViewChange}
-          >
-            {views.map((view) => (
-              <option key={view.id} value={view.id}>
-                {view.view_name}
-              </option>
-            ))}
-          </select>
+          <div className="tte-ref-view-select-wrap">
+            <select
+              className="tte-ref-view-select-top"
+              value={selectedViewId}
+              onChange={handleViewChange}
+            >
+              {views.map((view) => (
+                <option key={view.id} value={view.id}>
+                  {view.view_name}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              className="tte-ref-next-view-btn"
+              onClick={handleNextView}
+              aria-label="Next view"
+            >
+              &gt;
+            </button>
+          </div>
         </div>
 
         <div className="tte-ref-card">
