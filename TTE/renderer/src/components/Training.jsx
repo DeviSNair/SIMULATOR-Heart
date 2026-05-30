@@ -29,6 +29,7 @@ export default function Training({ setMode }) {
   const [matchedViewId, setMatchedViewId] = useState(null);
   const [probeStatus, setProbeStatus] = useState("Waiting for probe input.");
   const [matchedCalibration, setMatchedCalibration] = useState(null);
+  const [activeViewControl, setActiveViewControl] = useState("");
 
   const filteredViews = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -173,6 +174,7 @@ export default function Training({ setMode }) {
 
   function handleFilteredSelectChange(e) {
     const value = e.target.value;
+    setActiveViewControl("dropdown");
     setSelectedViewName(value);
 
     const selected = trainingViews.find((view) => view.view_name === value);
@@ -187,8 +189,22 @@ export default function Training({ setMode }) {
     const currentIndex = filteredViews.findIndex((view) => view.id === currentId);
     const nextView = filteredViews[(currentIndex + 1) % filteredViews.length] ?? filteredViews[0];
 
+    setActiveViewControl("next");
     setCurrentId(nextView.id);
     setSelectedViewName(nextView.view_name);
+  }
+
+  function handlePreviousView() {
+    if (!filteredViews.length) return;
+
+    const currentIndex = filteredViews.findIndex((view) => view.id === currentId);
+    const previousIndex =
+      currentIndex <= 0 ? filteredViews.length - 1 : currentIndex - 1;
+    const previousView = filteredViews[previousIndex] ?? filteredViews[0];
+
+    setActiveViewControl("previous");
+    setCurrentId(previousView.id);
+    setSelectedViewName(previousView.view_name);
   }
 
   if (!currentView) return null;
@@ -337,11 +353,13 @@ export default function Training({ setMode }) {
             />
           </div>
 
-          <div className="tte-ref-view-select-wrap">
+          <div className={`tte-ref-view-select-wrap${activeViewControl ? ` is-${activeViewControl}-active` : ""}`}>
             <select
               className="tte-ref-view-select-top"
               value={selectedViewName || currentView.view_name}
               onChange={handleFilteredSelectChange}
+              onFocus={() => setActiveViewControl("dropdown")}
+              onPointerDown={() => setActiveViewControl("dropdown")}
             >
               {filteredViews.map((view) => (
                 <option key={view.id} value={view.view_name}>
@@ -349,6 +367,14 @@ export default function Training({ setMode }) {
                 </option>
               ))}
             </select>
+            <button
+              type="button"
+              className="tte-ref-previous-view-btn"
+              onClick={handlePreviousView}
+              aria-label="Previous view"
+            >
+              &lt;
+            </button>
             <button
               type="button"
               className="tte-ref-next-view-btn"

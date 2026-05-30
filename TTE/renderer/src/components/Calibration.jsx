@@ -18,6 +18,7 @@ export default function Calibration({ setMode }) {
   const [serialPorts, setSerialPorts] = useState([]);
   const [selectedPort, setSelectedPort] = useState("");
   const [clickedCalibrationViews, setClickedCalibrationViews] = useState({});
+  const [activeViewControl, setActiveViewControl] = useState("");
 
   const currentView = useMemo(() => {
     return views.find((view) => view.id === selectedViewId) ?? views[0];
@@ -105,6 +106,7 @@ export default function Calibration({ setMode }) {
 
   function handleViewChange(e) {
     const nextViewId = Number(e.target.value);
+    setActiveViewControl("dropdown");
     setSelectedViewId(nextViewId);
     loadViewCalibration(nextViewId);
   }
@@ -115,8 +117,21 @@ export default function Calibration({ setMode }) {
     const currentIndex = views.findIndex((view) => view.id === selectedViewId);
     const nextView = views[(currentIndex + 1) % views.length] ?? views[0];
 
+    setActiveViewControl("next");
     setSelectedViewId(nextView.id);
     loadViewCalibration(nextView.id);
+  }
+
+  function handlePreviousView() {
+    if (!views.length) return;
+
+    const currentIndex = views.findIndex((view) => view.id === selectedViewId);
+    const previousIndex = currentIndex <= 0 ? views.length - 1 : currentIndex - 1;
+    const previousView = views[previousIndex] ?? views[0];
+
+    setActiveViewControl("previous");
+    setSelectedViewId(previousView.id);
+    loadViewCalibration(previousView.id);
   }
 
   function handleSave() {
@@ -181,11 +196,13 @@ export default function Calibration({ setMode }) {
             {status || "Choose a view, position the probe, and save the current live reading for training mode."}
           </div>
 
-          <div className="tte-ref-view-select-wrap">
+          <div className={`tte-ref-view-select-wrap${activeViewControl ? ` is-${activeViewControl}-active` : ""}`}>
             <select
               className="tte-ref-view-select-top"
               value={selectedViewId}
               onChange={handleViewChange}
+              onFocus={() => setActiveViewControl("dropdown")}
+              onPointerDown={() => setActiveViewControl("dropdown")}
             >
               {views.map((view) => (
                 <option key={view.id} value={view.id}>
@@ -193,6 +210,14 @@ export default function Calibration({ setMode }) {
                 </option>
               ))}
             </select>
+            <button
+              type="button"
+              className="tte-ref-previous-view-btn"
+              onClick={handlePreviousView}
+              aria-label="Previous view"
+            >
+              &lt;
+            </button>
             <button
               type="button"
               className="tte-ref-next-view-btn"

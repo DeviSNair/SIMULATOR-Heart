@@ -399,7 +399,7 @@ body {
   height: 58px;
   border: 1px solid #e5eef5;
   outline: none;
-  padding: 0 54px 0 18px;
+  padding: 0 56px 0 48px;
   font-size: 15px;
   color: #29485f;
   background: #ffffff;
@@ -445,15 +445,15 @@ body {
   z-index: 1;
 }
 
-.tte-ref-view-select-wrap:has(.tte-ref-view-select-top:active)::before {
+.tte-ref-view-select-wrap.is-dropdown-active::before {
   border-color: #3d7cff;
   box-shadow: 0 0 0 3px rgba(61, 124, 255, 0.12);
 }
 
+.tte-ref-previous-view-btn,
 .tte-ref-next-view-btn {
   position: absolute;
   top: 7px;
-  right: 9px;
   width: 24px;
   height: 22px;
   border: 1px solid #d5e3ee;
@@ -466,6 +466,15 @@ body {
   z-index: 2;
 }
 
+.tte-ref-previous-view-btn {
+  left: 9px;
+}
+
+.tte-ref-next-view-btn {
+  right: 9px;
+}
+
+.tte-ref-previous-view-btn::before,
 .tte-ref-next-view-btn::before {
   content: "";
   position: absolute;
@@ -475,10 +484,18 @@ body {
   height: 7px;
   border: solid #0e496d;
   border-width: 0 2px 2px 0;
+}
+
+.tte-ref-previous-view-btn::before {
+  transform: rotate(135deg);
+}
+
+.tte-ref-next-view-btn::before {
   transform: rotate(-45deg);
 }
 
-.tte-ref-next-view-btn:active {
+.tte-ref-view-select-wrap.is-previous-active .tte-ref-previous-view-btn,
+.tte-ref-view-select-wrap.is-next-active .tte-ref-next-view-btn {
   border-color: #3d7cff;
   color: #245c74;
   outline: none;
