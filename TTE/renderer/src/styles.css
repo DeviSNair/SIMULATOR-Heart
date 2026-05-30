@@ -421,7 +421,7 @@ body {
   content: "";
   position: absolute;
   right: 17px;
-  top: 35px;
+  top: 37px;
   width: 7px;
   height: 7px;
   border: solid #0e496d;
@@ -431,15 +431,29 @@ body {
   z-index: 2;
 }
 
+.tte-ref-view-select-wrap::before {
+  content: "";
+  position: absolute;
+  top: 29px;
+  right: 9px;
+  width: 24px;
+  height: 22px;
+  border: 1px solid #d5e3ee;
+  border-radius: 6px;
+  background: #ffffff;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .tte-ref-next-view-btn {
   position: absolute;
-  top: 10px;
-  right: 13px;
-  width: 16px;
-  height: 16px;
-  border: none;
-  border-radius: 4px;
-  background: transparent;
+  top: 7px;
+  right: 9px;
+  width: 24px;
+  height: 22px;
+  border: 1px solid #d5e3ee;
+  border-radius: 6px;
+  background: #ffffff;
   color: #0e496d;
   cursor: pointer;
   font-size: 0;
@@ -450,8 +464,8 @@ body {
 .tte-ref-next-view-btn::before {
   content: "";
   position: absolute;
-  left: 4px;
-  top: 4px;
+  left: 7px;
+  top: 6px;
   width: 7px;
   height: 7px;
   border: solid #0e496d;
