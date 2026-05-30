@@ -438,12 +438,16 @@ body {
   right: 9px;
   width: 24px;
   height: 22px;
-  border: 1px solid #3d7cff;
+  border: 1px solid #d5e3ee;
   border-radius: 6px;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(61, 124, 255, 0.12);
   pointer-events: none;
   z-index: 1;
+}
+
+.tte-ref-view-select-wrap:has(.tte-ref-view-select-top:active)::before {
+  border-color: #3d7cff;
+  box-shadow: 0 0 0 3px rgba(61, 124, 255, 0.12);
 }
 
 .tte-ref-next-view-btn {
@@ -452,10 +456,9 @@ body {
   right: 9px;
   width: 24px;
   height: 22px;
-  border: 1px solid #3d7cff;
+  border: 1px solid #d5e3ee;
   border-radius: 6px;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(61, 124, 255, 0.12);
   color: #0e496d;
   cursor: pointer;
   font-size: 0;
@@ -475,8 +478,7 @@ body {
   transform: rotate(-45deg);
 }
 
-.tte-ref-next-view-btn:hover,
-.tte-ref-next-view-btn:focus-visible {
+.tte-ref-next-view-btn:active {
   border-color: #3d7cff;
   color: #245c74;
   outline: none;
