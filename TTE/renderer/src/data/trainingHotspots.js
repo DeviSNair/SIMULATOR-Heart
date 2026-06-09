@@ -5,48 +5,47 @@ export const trainingViewOverrides = {
     image: "/assets/training/images/PlaxEcho.png",
     video: "/assets/training/videos/plax.mp4",
     hotspots: [
-      { id: "plax-dta", label: "DTA", x: 56.74, y: 77.51 },
       { id: "plax-rv", label: "RV", x: 52.5, y: 29.73, options: ["RV", "LV", "Aorta", "LA"] },
-      { id: "plax-av", label: "AV", x: 55.92, y: 46.08 },
       { id: "plax-lv", label: "LV", x: 40.97, y: 47.44, options: ["RV", "LV", "Aorta", "LA"] },
-      { id: "plax-la", label: "LA", x: 55.2, y: 62.99 },
-      { id: "plax-aorta", label: "Aorta", x: 64.14, y: 44.79 },
-      { id: "plax-mv", label: "MV", x: 47.41, y: 60.3 }
+      { id: "plax-av", label: "AV", x: 55.92, y: 46.08, options: ["AV", "MV", "PV", "TV"] },
+      { id: "plax-aorta", label: "Aorta", x: 64.14, y: 44.79, options: ["RV", "LV", "Aorta", "LA"] },
+      { id: "plax-mv", label: "MV", x: 47.41, y: 60.3, options: ["AV", "MV", "PV", "TV"] },
+      { id: "plax-la", label: "LA", x: 55.2, y: 62.99, options: ["RV", "LV", "Aorta", "LA"] },
+      { id: "plax-dta", label: "DTA", x: 56.74, y: 77.51, options: ["DTA", "SVC", "IVC", "Pulmonary vein"] }
     ]
   },
   2: {
     image: "/assets/training/images/PlaxRVinEcho.png",
     video: "/assets/training/videos/PlaxRVin.mp4",
     hotspots: [
-      { id: "plax-rvin-rv", label: "RV", x: 55.42, y: 31.3 },
-      { id: "plax-rvin-ivc", label: "IVC", x: 71.95, y: 48.65 },
-      { id: "plax-rvin-tv", label: "TV", x: 56.96, y: 51.98 },
-      { id: "plax-rvin-ra", label: "RA", x: 62.55, y: 61.55 },
-      { id: "plax-rvin-svc", label: "SVC", x: 57.85, y: 82.23 }
+      { id: "plax-rvin-rv", label: "RV", x: 55.42, y: 31.3, options: ["RV", "LV", "Aorta", "LA"] },
+      { id: "plax-rvin-ivc", label: "IVC", x: 71.95, y: 48.65, options: ["SVC", "IVC", "PV", "PA"] },
+      { id: "plax-rvin-tv", label: "TV", x: 56.96, y: 51.98, options: ["TV", "PV", "MV", "AV"] },
+      { id: "plax-rvin-ra", label: "RA", x: 62.55, y: 61.55, options: ["RA", "RV", "LA", "PA"] },
+      { id: "plax-rvin-svc", label: "SVC", x: 57.85, y: 82.23, options: ["SVC", "IVC", "PV", "PA"] }
     ]
   },
   3: {
     image: "/assets/training/images/PlaxRVoutEcho.png",
     video: "/assets/training/videos/PlaxRVout.mp4",
     hotspots: [
-      { id: "plax-rvout-pv", label: "PV", x: 55.98, y: 35.61 },
-      { id: "plax-rvout-pa", label: "PA", x: 60.98, y: 47.07 },
-      { id: "plax-rvout-rv", label: "RV", x: 50.4, y: 29.55 }
+      { id: "plax-rvout-pv", label: "PV", x: 55.98, y: 35.61, options: ["RVOT", "PV", "Aorta", "LV"] },
+      { id: "plax-rvout-pa", label: "PA", x: 60.98, y: 47.07, options: ["RA", "PA", "Aorta", "AV"] },
+      { id: "plax-rvout-rv", label: "RV", x: 50.4, y: 29.55, options: ["RV", "TV", "LV", "AV"] }
     ]
   },
   4: {
     image: "/assets/training/images/PsaxOutEcho.png",
     video: "/assets/training/videos/PsaxOut.mp4",
     hotspots: [
-      { id: "psax-out-aorta", label: "Aorta", x: 90.8, y: 26.41 },
-      { id: "psax-out-ias", label: "IAS", x: 41.67, y: 57.99 },
-      { id: "psax-out-pa", label: "PA", x: 61.33, y: 44.78 },
-      { id: "psax-out-pv", label: "PV", x: 60.22, y: 38.93 },
-      { id: "psax-out-tv", label: "TV", x: 40.9, y: 38.93 },
-      { id: "psax-out-rv", label: "RV", x: 47.43, y: 28.16 },
-      { id: "psax-out-ra", label: "RA", x: 39.07, y: 47.48 },
-      { id: "psax-out-la", label: "LA", x: 48.2, y: 63.5 },
-      { id: "psax-out-av", label: "AV", x: 50.7, y: 47.35 }
+      { id: "psax-out-aorta", label: "Aorta", x: 90.8, y: 26.41, options: ["RV", "LV", "PA", "Aorta"] },
+      { id: "psax-out-ias", label: "IAS", x: 41.67, y: 57.99, options: ["TV", "IAS", "MV", "PV"] },
+      { id: "psax-out-pv", label: "PV", x: 60.22, y: 38.93, options: ["PV", "AV", "TV", "MV"] },
+      { id: "psax-out-ra", label: "RA", x: 39.07, y: 47.48, options: ["LA", "RA", "RV", "PA"] },
+      { id: "psax-out-tv", label: "TV", x: 40.9, y: 38.93, options: ["AV", "PV", "MV", "TV"] },
+      { id: "psax-out-pa", label: "PA", x: 61.33, y: 44.78, options: ["PA", "Aorta", "RV", "LV"] },
+      { id: "psax-out-rv", label: "IVS", x: 47.43, y: 28.16, options: ["IVS", "IAS", "TV", "PV"] },
+      { id: "psax-out-la", label: "LA", x: 48.2, y: 63.5, options: ["LA", "RA", "RV", "PA"] }
     ]
   },
   5: {
