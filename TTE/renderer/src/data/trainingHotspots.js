@@ -6,9 +6,9 @@ export const trainingViewOverrides = {
     video: "/assets/training/videos/plax.mp4",
     hotspots: [
       { id: "plax-dta", label: "DTA", x: 56.74, y: 77.51 },
-      { id: "plax-rv", label: "RV", x: 52.5, y: 29.73 },
+      { id: "plax-rv", label: "RV", x: 52.5, y: 29.73, options: ["RV", "LV", "Aorta", "LA"] },
       { id: "plax-av", label: "AV", x: 55.92, y: 46.08 },
-      { id: "plax-lv", label: "LV", x: 40.97, y: 47.44 },
+      { id: "plax-lv", label: "LV", x: 40.97, y: 47.44, options: ["RV", "LV", "Aorta", "LA"] },
       { id: "plax-la", label: "LA", x: 55.2, y: 62.99 },
       { id: "plax-aorta", label: "Aorta", x: 64.14, y: 44.79 },
       { id: "plax-mv", label: "MV", x: 47.41, y: 60.3 }
